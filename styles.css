@@ -1,0 +1,654 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root{
+    --main-colour:#006241;
+    --black: #13131a;
+    --bg: #010103;
+    --border: .1rem solid rgba(255,255,255,.3);
+  }
+
+*{
+    font-family: 'roboto';
+    margin: 0;
+    padding:0;
+    box-sizing:border-box;
+    outline: none; 
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+  html{
+    font-size: 62.5%;
+    overflow:  auto;
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+  }
+
+  html::-webkit-scrollbar{
+    width:.8rem;
+  }
+
+  html::-webkit-scrollbar-track{
+    background: transparent;
+  }
+
+  html::-webkit-scrollbar-thumb{
+    background-color: var(--main-colour);
+    border-radius: 5rem;
+  }
+
+  body{
+    background-color: var(--bg);
+  }
+
+  section{
+    padding: 2rem 7%;
+  }
+
+  .heading{
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    padding-bottom: 3.5rem;
+    font-size: 4rem;
+  }
+  .heading span{
+    color:var(--main-colour);
+    text-transform: uppercase;
+  }
+  .btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 3rem;
+    font-size:1.7rem;
+    color: #fff;
+    background: var(--main-colour);
+    cursor: pointer;
+  }
+  .btn:hover{
+    letter-spacing: 0.2rem;
+    
+  }
+  .header {
+    background-color: var(--bg);
+    padding: 1.5rem 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header .logo img {
+    height: 7rem;
+}
+
+.header .navbar a {
+    margin: 0 1rem;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+.header .navbar a:hover {
+    color: var(--main-colour);
+    border-bottom: .1rem solid var(--main-colour);
+    padding-bottom: .5rem;
+}
+
+.header .icons div {
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+    margin-left: 2rem;
+}
+
+.header .icons div:hover {
+    color: var(--main-colour);
+}
+
+/* Search Form Styles */
+.header .search-form {
+    position: absolute;
+    top: 115%;
+    right: 7%;
+    background: #fff;
+    width: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    transform: scaleY(0);
+    transform-origin: top;
+}
+
+.header .search-form.active {
+    transform: scaleY(1);
+}
+
+.header .search-form input {
+    height: 100%;
+    width:100%;
+    font-size: 1.6rem;
+    color: var(--black);
+    padding: 1rem;
+}
+
+.header .search-form label {
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin-right: 1.5rem;
+}
+
+.header .cart-items-container {
+    position: absolute; /* Positioned relative to the header */
+    top: 100%; /* Positioned below the header */
+    right: -100%; /* Initially hidden off-screen */
+    height: calc(100vh - 9.5rem); /* Full height minus header height */
+    width: 35rem; /* Width of the cart */
+    background-color: #fff; /* White background for cart */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    transition: right 0.3s ease; /* Smooth transition when showing/hiding */
+    padding: 1rem; /* Add padding around the cart items container */
+}
+
+.header .cart-items-container.active {
+    right: 0; /* Show cart when active */
+}
+
+.header .cart-items-container .cart-item {
+    position: relative; /* Positioning for child elements */
+    margin: 1rem 0; /* Space between items */
+    display: flex; /* Flexbox layout for item content */
+    align-items: center; /* Center items vertically */
+    gap: 1.5rem; /* Space between image and content */
+}
+
+.header .cart-items-container .cart-item img {
+    height: 7rem; /* Fixed height for product images */
+    width: auto; /* Maintain aspect ratio */
+}
+
+.header .cart-items-container .content h3 {
+    font-size: 1.8rem; /* Font size for product names */
+    color: var(--black); /* Text color from CSS variable */
+}
+
+.header .cart-items-container .content .price {
+    font-size: 1.5rem; /* Font size for prices */
+    color: var(--main-colour); /* Color from CSS variable */
+}
+
+.header .cart-items-container .fa-times {
+    position: absolute; /* Position close button relative to item */
+    top: 1rem; 
+    right: 1rem; 
+    font-size: 2rem; /* Size of close button icon */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.header .cart-items-container .fa-times:hover {
+    color: var(--main-colour); /* Change color on hover */
+}
+
+/* Checkout Button Styles */
+.header .cart-items-container .btn {
+    width: 100%; /* Full width button */
+    padding: 1rem; 
+    background-color: var(--main-colour); 
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.home {
+    min-height: 100vh; /* Full viewport height */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center content vertically */
+    background: url("homeport.jpeg") no-repeat center center; /* Background image */
+    background-size: cover; /* Cover the entire section */
+}
+
+.home .content {
+    max-width: 70rem; /* Maximum width for content */
+    margin: 0 auto; /* Center content horizontally */
+    text-align: center; /* Center text */
+}
+
+.home .content h3 {
+    font-size: 6rem; /* Large heading size */
+    text-transform: uppercase; /* Uppercase text */
+    color: #fff; /* White color for text */
+}
+
+.home .content p {
+    font-size: 2rem; /* Paragraph font size */
+    font-weight: lighter; /* Lighter font weight */
+    line-height: 1.8; /* Line height for readability */
+    padding: 1rem 0; /* Vertical padding around paragraph */
+    color: #eee; /* Light gray color for text */
+}
+
+.home .content .btn {
+    display: inline-block; /* Button display type */
+    padding: 1rem 2rem; /* Padding inside button */
+    margin-top: 1.5rem; /* Space above button */
+    background-color: var(--main-colour); /* Background color from variable */
+    color: #fff; /* White text color */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* No underline on link */
+}
+
+.home .content .btn:hover {
+    background-color: darken(var(--main-colour), 10%); /* Darker shade on hover (requires SASS or similar) */
+}
+
+.about {
+    background-color: var(--black); /* Background color for the about section */
+    padding: 5rem 0; /* Padding to create space around the section */
+}
+
+.about .row {
+    display: flex;
+    align-items: center;
+    background-color: var(--black);
+    flex-wrap: wrap;
+}
+
+.about .row .image {
+    flex: 1 1 45rem; /* Flex-grow, flex-shrink, and base width */
+    margin-right: 2rem; /* Add margin to create space on the right side of the image */
+}
+
+.about .row .image img {
+    width: 100%; /* Make image responsive */
+}
+
+.about .row .content {
+    flex: 1 1 45rem; /* Flex-grow, flex-shrink, and base width */
+    padding: 2rem; /* Padding around content */
+}
+
+.about .row .content h3 {
+    font-size: 3rem; /* Font size for headings */
+    color: #fff; /* White color for text */
+}
+
+.about .row .content p {
+    font-size: 1.6rem; /* Font size for paragraphs */
+    color: #ccc; /* Light gray color for text */
+    padding: 1rem 0; /* Vertical padding around paragraph */
+    line-height: 1.8; /* Line height for readability */
+}
+
+/* Additional Styles (Optional) */
+.about h1.heading {
+    text-align: center; /* Center the heading text */
+    font-size: 4rem; /* Size of the section heading */
+    color: var(--main-colour); /* Use main color variable */
+}
+
+.about .btn {
+    display: inline-block; /* Button display type */
+    padding: 1rem 2rem; /* Padding inside button */
+    background-color: var(--main-colour); /* Background color from variable */
+    color: #fff; /* White text color */
+    border-radius: 5px; /* Rounded corners for button */
+    text-decoration: none; /* No underline on link */
+}
+
+.about .btn:hover {
+    background-color: darken(var(--main-colour), 10%); /* Darker shade on hover (requires SASS or similar) */
+}
+
+.menu {
+    padding: 5rem 0; /* Add padding to the top and bottom of the menu section */
+    background-color: var(--black); /* Background color for the menu section */
+    color: #fff; /* Default text color */
+}
+
+.menu .heading {
+    text-align: center; /* Center the heading */
+    font-size: 3rem; /* Font size for heading */
+    margin-bottom: 2rem; /* Space below heading */
+}
+
+.menu .box-container {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Responsive columns */
+    gap: 1.5rem; /* Space between boxes */
+}
+
+.menu .box-container .box {
+    padding: 2rem; /* Padding inside each box */
+    text-align: center; /* Center text in boxes */
+    border: var(--border); /* Border from CSS variable */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background for contrast */
+    transition: background 0.3s ease; /* Smooth transition for background on hover */
+}
+
+.menu .box-container .box img {
+    height: 20rem; /* Fixed height for images */
+    object-fit: cover; /* Maintain aspect ratio while covering the box */
+}
+
+.menu .box-container .box h3 {
+    color: #fff; /* White color for headings */
+    font-size: 2rem; /* Font size for headings */
+    padding: 1rem 0; /* Padding around headings */
+}
+.menu .box-container .box .price {
+    color: #fff; /* White color for price text */
+    font-size: 2.5rem; /* Font size for price */
+    padding: 0.5rem 0; /* Padding around price text */
+}
+
+.menu .box-container .box .price span {
+    font-size: 1.5rem; /* Font size for original price (strikethrough) */
+    text-decoration: line-through; /* Strikethrough effect for original price */
+    padding-left: 1rem; /* Space between current and original price */
+}
+
+.menu .box-container .box:hover {
+    background: #fff; /* Change background on hover */
+}
+
+.menu .box-container .box:hover > * {
+    color: var(--black); /* Change text color on hover to black */
+}
+.products {
+    padding: 5rem 0; /* Add padding to the top and bottom of the products section */
+    background-color: var(--black); /* Background color for the products section */
+    color: #fff; /* Default text color */
+}
+
+.products .box-container {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Responsive columns */
+    gap: 1.5rem; /* Space between boxes */
+}
+
+.products .box-container .box {
+    text-align: center; /* Center text in boxes */
+    border: var(--border); /* Border from CSS variable */
+    padding: 2rem; /* Padding inside each box */
+}
+
+.products .box-container .box .icons {
+    display: flex; /* Use flex layout instead of flexbox (corrected) */
+    justify-content: space-around; /* Space items evenly */
+    gap: 2rem; /* Space between icons */
+    margin-top: 1rem; /* Margin above icons */
+}
+
+.products .box-container .box .icons a {
+    height: 5rem; /* Height of icon links */
+    width: 5rem; /* Width of icon links */
+    line-height: 5rem; /* Center icon vertically */
+    font-size: 2rem; /* Font size for icons */
+    border: var(--border); /* Border from CSS variable */
+    margin: .3rem; /* Margin around icons */
+    color: #fff; /* Default icon color */
+}
+
+.products .box-container .box .icons a:hover {
+    background: var(--main-colour); /* Background color on hover */
+    color: #fff; /* Icon color on hover */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition effects */
+}
+
+.products .box-container .box .image {
+    padding: 2.5rem 0; /* Padding around image */
+}
+
+.products .box-container .box .image img {
+    height: 20rem; /* Fixed height for images */
+}
+
+.products .box-container .box .content h3 {
+    color: #fff; /* White color for product titles */
+    font-size: 2.5rem; /* Font size for product titles */
+}
+
+.products .box-container .box .content .stars {
+    padding: 1.5rem; /* Padding around stars rating */
+}
+
+.products .box-container .box .content .stars i {
+    color: var(--main-colour); /* Color for star icons */
+    font-size: 1.7rem; /* Font size for star icons */
+}
+
+.products .box-container .box .content .price {
+    color: #fff; /* White color for current price */
+    font-size: 2.5rem; /* Font size for current price */
+    padding: 1rem 0; /* Padding around current price */
+}
+
+.products .box-container .box .content .price span {
+    font-size: 1.5rem; /* Font size for original price (strikethrough) */
+    text-decoration: line-through; /* Strikethrough effect for original price */
+    padding-left: 1rem; /* Space between current and original price */
+    font-weight: lighter; /* Lighter font weight for original price */
+}
+
+.review {
+    padding: 5rem 0; /* Add padding to the top and bottom of the review section */
+    background-color: var(--black); /* Background color for the review section */
+    color: #fff; /* Default text color */
+}
+
+.review .heading {
+    text-align: center; /* Center the heading */
+    font-size: 3rem; /* Font size for heading */
+    margin-bottom: 2rem; /* Space below heading */
+}
+
+.review .box-container {
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr)); /* Responsive columns */
+    gap: 1.5rem; /* Space between boxes */
+}
+
+.review .box-container .box {
+    text-align: center; /* Center text in boxes */
+    border: var(--border); /* Border from CSS variable */
+    padding: 3rem 2rem; /* Padding inside each box */
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background for contrast */
+}
+
+.review .box-container .box p {
+    font-size: 1.5rem; /* Font size for reviews */
+    color: #ccc; /* Light gray color for text */
+    padding: 1rem 0; /* Padding around review text */
+    line-height: 1.8; /* Line height for readability */
+}
+
+.review .box-container .box img {
+    height: 15rem; /* Fixed height for quote images */
+}
+
+.review .box-container .box .quote {
+    height: 10rem; /* Fixed height for quote icons or images */
+    width: auto; /* Maintain aspect ratio */
+}
+
+.review .box-container .box .user {
+    height: 7rem; /* Fixed height for user images */
+    width: 7rem; /* Fixed width for user images */
+    border-radius: 50%; /* Make user image circular */
+    object-fit: cover; /* Ensure image covers the area without distortion */
+}
+
+.review .box-container .box h3 {
+    padding: 1rem 0; /* Padding around heading */
+    font-size: 2rem; /* Font size for user names */
+    color: #fff; /* White color for user names */
+}
+
+.review .box-container .box .stars i {
+    font-size: 1.5rem; /* Font size for star icons */
+    color: var(--main-colour); /* Color for star icons from CSS variable */
+}
+.footer {
+    background-color: var(--black); /* Background color for the footer */
+    text-align: center; /* Center align text in footer */
+    padding: 2rem 0; /* Padding around the footer */
+}
+
+.footer .share {
+    padding: 1rem 0; /* Padding for share section */
+}
+
+.footer .share a {
+    height: 5rem; /* Height of social media icons */
+    width: 5rem; /* Width of social media icons */
+    line-height: 5rem; /* Center icon vertically */
+    font-size: 2rem; /* Font size for icons */
+    color: #fff; /* Icon color */
+    border: var(--border); /* Border from CSS variable */
+    margin: 0.3rem; /* Margin around icons */
+    border-radius: 50%; /* Make icons circular */
+}
+
+.footer .share a:hover {
+    background: var(--main-colour); /* Background color on hover */
+    color: #fff; /* Keep text color white on hover */
+    transition: background 0.3s ease, color 0.3s ease; /* Smooth transition effect */
+}
+
+.footer .links {
+    display: flex; /* Use flexbox for links layout */
+    justify-content: center; /* Center links horizontally */
+    flex-wrap: wrap; /* Allow wrapping of links on smaller screens */
+    padding: 2rem 0; /* Padding for links section */
+    gap: 1rem; /* Space between links */
+}
+
+.footer .links a {
+    padding: .7rem 2rem; /* Padding inside link buttons */
+    color: #fff; /* Text color for links */
+    border: var(--border); /* Border from CSS variable */
+    font-size: 2rem; /* Font size for links */
+}
+
+.footer .links a:hover {
+    background-color: var(--main-colour); /* Background color on hover for links */
+}
+
+.footer .credit {
+    font-size: 1.8rem; /* Font size for credit text */
+    color: #fff; /* Text color for credit */
+    padding: 1.5rem; /* Padding around credit text */
+}
+
+.footer .credit span {
+    color: var(--main-colour); /* Color for highlighted text in credit */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @media(max-width:991px){
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding:1.5rem 2rem; 
+    }
+    section{
+        padding:2rem 7%;
+      }
+  }
+  @media(max-width:768px){
+    #menu-btn{
+        display: inline-block;
+    }
+    .header .navbar{
+        position:absolute;
+        top:100%;right:-100%;
+        background: #fff;
+        width: 30rem;
+        height:calc(100vh - 9.5rem);
+    }
+    .header .navbar.active{
+        right:0;
+    }
+    
+    .header .navbar a{
+        display: block;
+        color: var(--black);
+        margin: 1.5rem;
+        padding: .5rem;
+        font-size: 2rem;
+        transition: color 0.3s ease;
+    }
+
+    .header .navbar a:hover,
+    .header .navbar a:focus {
+    color: var(--main-colour); 
+    text-decoration: underline;
+}
+    .header .search-form{
+        width:90%;
+        right:2rem;
+    }
+    .home{
+        background-position: left;
+        justify-content: center;
+        text-align: center;
+    }
+    .home .content h3{
+        font-size: 4.5rem;
+    }
+    .home .content p{
+        font-size: 1.5rem;
+    }
+  }
+  @media(max-width:450px){
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding:1.5rem 2rem; 
+    }
+  }
